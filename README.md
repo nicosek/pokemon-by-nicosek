@@ -2,13 +2,13 @@
 
 This application is an API that gives access to a collection of Pokemons and Types, the data coming from another Pokemon library API, **pokeapi.co**.
 
-You wil be able to make 4 requests to the API, show and index for Pokemons and Types.
+You wil be able to make 5 requests to the API, show and index for Pokemons and Types, and a request for synchronization with pokeapi API.
 
 This API is currently deployed on this [heroku app](https://pokemon-by-nicosek-6af5ebf307c8.herokuapp.com/)
 
 ## Requests
 ### Types
-* GET index "/types"
+* `GET index "/types"`
 ```json
 [
   {
@@ -24,7 +24,7 @@ This API is currently deployed on this [heroku app](https://pokemon-by-nicosek-6
   ...
 ]
 ```
-* GET show "/types/:id"
+* `GET show "/types/:id"`
 ```json
 {
   "id": 1,
@@ -65,7 +65,7 @@ This API is currently deployed on this [heroku app](https://pokemon-by-nicosek-6
 ```
 
 ### Pokemons
-* GET index "/pokemons"
+* `GET index "/pokemons"`
 ```json
 [
   {
@@ -81,7 +81,7 @@ This API is currently deployed on this [heroku app](https://pokemon-by-nicosek-6
   ...
 ]
 ```
-* GET show "/pokemons/:id"
+* `GET show "/pokemons/:id"`
 ```json
 {
   "id": 1,
@@ -106,6 +106,11 @@ This API is currently deployed on this [heroku app](https://pokemon-by-nicosek-6
 }
 ```
 
+### Synchronize with poke-api data
+You can add missing entries in your database from poke-api by triggering this action :
+`POST "/synchronize_with_poke_api"`
+It will add entries from poke-api that are not present in the app database.
+
 ## How to clone that API
 
 You can try this app on a develoment environment by cloning the project :
@@ -123,6 +128,10 @@ You can try this app on a develoment environment by cloning the project :
   ```
   rails db:create
   rails db:migrate
+  ```
+* Seed the database with data from poke-api
+  ```
+  rails db:seed
   ```
 * Launch the server
   ```
