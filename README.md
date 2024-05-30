@@ -4,8 +4,10 @@ This application is an API that gives access to a collection of Pokemons and Typ
 
 You wil be able to make 4 requests to the API, show and index for Pokemons and Types.
 
-## Requests
+This API is currently deployed on this [heroku app](https://pokemon-by-nicosek-6af5ebf307c8.herokuapp.com/)
 
+## Requests
+### Types
 * GET index "/types"
 ```json
 [
@@ -61,3 +63,71 @@ You wil be able to make 4 requests to the API, show and index for Pokemons and T
   ]
 }
 ```
+
+### Pokemons
+* GET index "/pokemons"
+```json
+[
+  {
+    "id": 1,
+    "name": "bulbasaur",
+    "url": "http://www.pokemon-by-nicosek.com/pokemons/1"
+  },
+  {
+    "id": 2,
+    "name": "ivysaur",
+    "url": "http://www.pokemon-by-nicosek.com/pokemons/2"
+  },
+  ...
+]
+```
+* GET show "/pokemons/:id"
+```json
+{
+  "id": 1,
+  "name": "bulbasaur",
+  "base_experience": 64,
+  "height": 7,
+  "weight": 69,
+  "order": 1,
+  "is_default": true,
+  "types": [
+    {
+      "id": 12,
+      "name": "grass",
+      "url": "http://www.pokemon-by-nicosek.com/types/12"
+    },
+    {
+      "id": 4,
+      "name": "poison",
+      "url": "http://www.pokemon-by-nicosek.com/types/4"
+    }
+  ]
+}
+```
+
+## How to clone that API
+
+You can try this app on a develoment environment by cloning the project :
+* Retrieve this folder by typing this command in your terminal :
+  ```
+  git clone https://github.com/nicosek/pokemon-by-nicosek/nicosek/pokemon-by-nicosek
+  ```
+  (More details on this procedure [here](https://docs.github.com/fr/repositories/creating-and-managing-repositories/cloning-a-repository))
+* Go to the local folder of the repository and launch a bundle command :
+  ```
+  cd "folder/path/pokemon-by-nicosek"
+  bundle install
+  ```
+* Create database and trigger migrations
+  ```
+  rails db:create
+  rails db:migrate
+  ```
+* Launch the server
+  ```
+  rails s
+  ```
+
+That's it, you can communicate with the API at `http://localhost:3000` !
+
